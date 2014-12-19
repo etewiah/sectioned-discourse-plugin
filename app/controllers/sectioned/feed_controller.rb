@@ -3,54 +3,18 @@ module Sectioned
     include CurrentUser
     # before_action :check_user, only: [:update_geo_places]
 
-    def get_for_geo
-      # if params[:geo]
-      #   # when a random geo has been passed in, below ensures a key is created for it
-      #   geo_key =  ensure_geo_key_exists params[:geo].downcase
-      # else
-      #   # TODO - log how often this is being called - pretty expensive as should be called as little as possible
-      #   geo_key = get_nearest_location_to_request
-      # end
-      # geo_key = MapTopic::GeoKey.first
-      # unless geo_key
-      #   # this is a really ugly attempt to ensure that I always return a geo_key
-      #   # TODO - have a more sensible way of getting the default
-      #   geo_key = MapTopic::GeoKey.where(:bounds_value => 'berlin').first
-      # end
-      # geo = geo_key.bounds_value
-      # # TODO - where params[:geo] is passed but is not the geo returned in geo_key (maybe default
-      # # geo was returned) , should return a message to client in addition
-
-      # @geo_topic_ids = MapTopic::TopicGeo.where(:bounds_value => geo).limit(10).pluck('topic_id')
-
-      geo_topics =  Topic.where("deleted_at" => nil)
+    def get_section_topics
+      
+      section_topics =  Topic.where("deleted_at" => nil)
       .where("visible")
       .where("archetype <> ?", Archetype.private_message)
       .limit(10)
-      # .where(id: @geo_topic_ids)
 
-      # TODO - use hotness or other criteria below:
-      # @other_topic_ids = MapTopic::TopicGeo.where("bounds_value <> ?", geo).limit(10).pluck('topic_id')
-      other_topics =  Topic.where("deleted_at" => nil)
-      .where("visible")
-      .where("archetype <> ?", Archetype.private_message)
-      .limit(30)
-      # .where(id: @other_topic_ids)
-
-
-      # geo_topic_list = TopicList.new(:blaa, current_user, location_topics_query)
-      # dynamically adding an extra attribute - could get me into trouble as serializer now expects this..
-      # geo_topic_list.class.module_eval { attr_accessor :city_info}
-      # geo_topic_list.city_info = location.to_json
-      geo_topic_list_serialized = serialize_data(geo_topics, TopicListItemSerializer)
-      other_topic_list_serialized = serialize_data(other_topics, TopicListItemSerializer)
+      geo_topic_list_serialized = serialize_data(section_topics, TopicListItemSerializer)
 
       # render_serialized(geo_topic_list, MapTopic::LocationTopicListSerializer,  root: 'geo_topic_list')
       return render_json_dump({
-                                "geo_topics" => geo_topic_list_serialized,
-                                "other_topics" => other_topic_list_serialized,
-                                "geo_key" => "geo_key",
-                                "geo" => "geo"
+                                "section_topics" => geo_topic_list_serialized,
       })
 
     end

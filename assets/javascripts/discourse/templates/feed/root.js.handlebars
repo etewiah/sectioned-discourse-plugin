@@ -2,11 +2,8 @@
 
 
   <div class="row">
-    <button class='btn btn-primary pull-right' style="" {{action 'startChattyMapCreation' }} title="">
-      <i class="fa fa-plus"></i>Create your own map
-    </button>
-    <button class='btn btn-primary pull-right' style="" {{action 'showHelpForCreateMap' }} title="">
-      <i class="fa fa-plus"></i>? help..
+    <button class='btn btn-primary pull-right' style="" {{action 'createTopic' }} title="">
+      <i class="fa fa-plus"></i>New Topic
     </button>
   </div>
   <div class="row">
@@ -18,7 +15,7 @@
 
 
 
-  {{#each topic in model.geo_topics }}
+  {{#each topic in model.section_topics }}
   <div class="geo-topic-line">
     {{#link-to 'topic.fromParams' topic.slug topic.id }}
     <div class="row geo-topic-row">

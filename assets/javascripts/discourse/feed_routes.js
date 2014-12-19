@@ -1,15 +1,23 @@
-Discourse.FeedRootRoute = Discourse.Route.extend({
+Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
+  actions: {
+    createTopic: function() {
+      // debugger;
+      // this.openComposer(this.controllerFor('feed/root'));
+      this.openComposer(this.controller);
+    }
+  },
   model: function(params) {
-    // return Discourse.GeoTopic.geoTopicsForCity('birmingham');
-    var geo = params.geo || 'birmingham';
-    // TODO, save server-side calculated geo locally..
-    if (!geo) {
-      console.log('no geo, will be expensive on server...');
+    var parts = location.hostname.split('.');
+    var subdomain = "";
+    if (parts.length > 2) {
+      subdomain = parts.shift();
     };
-    var url = Discourse.getURL("/section_feed/get_for_geo");
+    // var subdomain = parts.shift();
+    // var upperleveldomain = parts.join('.');
+    var url = Discourse.getURL("/section_feed/get_section_topics");
     return Discourse.ajax(url, {
       data: {
-        geo: geo
+        subdomain: subdomain
       }
     });
   },
