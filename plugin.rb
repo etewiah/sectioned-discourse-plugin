@@ -29,9 +29,8 @@ Discourse::Application.routes.append do
     mount Sectioned::Engine, at: '/'
 end
 
-# after_initialize do
-#   require_dependency File.expand_path('../integrate_location_topic.rb', __FILE__)
-#   load File.expand_path("../app/jobs/sectioned/update_categories.rb", __FILE__)
-#   load File.expand_path("../app/jobs/sectioned/corrections.rb", __FILE__)
-
-# end
+after_initialize do
+  require_dependency File.expand_path('../integrate_sectioned_plugin.rb', __FILE__)
+  # load File.expand_path("../app/jobs/sectioned/update_categories.rb", __FILE__)
+  # load File.expand_path("../app/jobs/sectioned/corrections.rb", __FILE__)
+end
