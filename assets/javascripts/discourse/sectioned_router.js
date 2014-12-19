@@ -10,7 +10,7 @@ Discourse.Route.buildRoutes(function() {
     // });
   });
   // Topic routes
-  this.resource('sectiontopic', { path: '/tt/:slug/:id' }, function() {
+  this.resource('sectiontopic', { path: '/topic/:slug/:id' }, function() {
     this.route('fromParams', { path: '/' });
     this.route('fromParamsNear', { path: '/:nearPost' });
   });

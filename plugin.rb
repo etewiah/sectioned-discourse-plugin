@@ -12,6 +12,7 @@ load File.expand_path('../lib/sectioned/engine.rb', __FILE__)
 
 
 # register_asset "javascripts/router.js"
+register_asset "javascripts/discourse/templates/components/home-logo.js.handlebars"
 register_asset "javascripts/discourse/feed_routes.js"
 register_asset "javascripts/discourse/feed_views.js"
 register_asset "javascripts/discourse/feed_controllers.js"
@@ -19,7 +20,7 @@ register_asset "javascripts/discourse/templates/feed/root.js.handlebars"
 register_asset "javascripts/discourse/sectioned_router.js"
 register_asset "javascripts/discourse/extensions/discovery_route.js"
 
-# register_asset "stylesheets/sectioned_common.scss"
+register_asset "stylesheets/sectioned_common.scss"
 # register_asset "stylesheets/pickaday.css"
 # register_asset "stylesheets/timepicker.css"
 

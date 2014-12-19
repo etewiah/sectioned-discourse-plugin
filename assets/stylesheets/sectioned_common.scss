@@ -1,0 +1,195 @@
+.ptr:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.maps-list-header{
+  font-size: x-large;
+  text-align: center;
+  padding: 15px;
+}
+
+.narrow-map {
+	height: 400px;
+}
+
+.place-in-post {
+  color: white !important;
+  background-color: #00c172 !important;
+}
+
+.place-in-post:hover {
+  color: white !important;
+  background-color: #007700 !important;
+}
+
+.btnNormal.active,.btnNormal:focus {
+    background-color: #00c172;
+    border-color: #009f61;
+    color: #aeffd3
+}
+
+.plain-topic-body {
+  background-color: #eeeeee;
+}
+
+.badge-posts {
+  color: #007700;
+}
+
+.badge-places {
+  padding: 3px 5px;
+  vertical-align: middle;
+  color: white;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  background-color: #00c172;;
+;
+}
+
+/* below for maps landing */
+.geo-topic-row {
+    min-height: 50px;
+}
+
+.geo-topic-line {
+    padding: 15px 15px 0px 15px;
+    background-color: #eeeeee;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.geo-topic-line:hover {
+    background-color: #aeffd3;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.geo-topic-sep {
+    display: block;
+    width: 99%;
+    height: 1px;
+    background-color: #EEE;
+    margin: 8px auto 0 0
+}
+
+.projList {
+    margin: 0 auto 0 10px;
+    padding: 0
+}
+
+.topic-list-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #00c172;
+}
+
+
+.topic-excerpt {
+  font-size: 1.0em;
+  font-weight: 400;
+  margin: 1%;
+  color: #434343;
+}
+
+.detailVal {
+    color: #AAA;
+    font-weight: 400
+}
+
+
+/* below for masonry boxes */
+
+#place-info-container {
+	margin-top: 1%;
+	margin-left: 1%;
+}
+.place-info-box {
+	width: 30%;
+	margin-bottom: 1%;
+  background-color: #eeeeee;
+  font-size: 1.0em;
+  font-weight: 400;
+  color: #434343;
+  padding: 6px 12px;
+}
+.place-info-box a {
+  color: #434343;
+}
+.place-info-box:hover {
+  background-color: #d5d5d5;
+  color: #434343;
+}
+.place-info-box h4 {
+/*   color: #00c172;
+*/
+}
+.grid-sizer {
+	width: 31%;
+}
+.gutter-sizer {
+	width: 1%;
+}
+
+.btn-group-vertical > .btn,
+.btn-group-vertical > .btn-group,
+.btn-group-vertical > .btn-group > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+}
+.btn-group-vertical > .btn-group > .btn {
+  float: none;
+}
+.btn-group-vertical > .btn + .btn,
+.btn-group-vertical > .btn + .btn-group,
+.btn-group-vertical > .btn-group + .btn,
+.btn-group-vertical > .btn-group + .btn-group {
+  margin-top: -1px;
+  margin-left: 0;
+}
+.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.btn-group-vertical > .btn:first-child:not(:last-child) {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btn-group-vertical > .btn:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+}
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn-group-justified {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+}
+.btn-group-justified > .btn,
+.btn-group-justified > .btn-group {
+  display: table-cell;
+  float: none;
+  width: 1%;
+}
+.btn-group-justified > .btn-group .btn {
+  width: 100%;
+}
+.btn-group-justified > .btn-group .dropdown-menu {
+  left: auto;
+}
