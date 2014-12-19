@@ -1,4 +1,6 @@
 Sectioned::Engine.routes.draw do
+  get "/section_feed/get_for_geo" => "feed#get_for_geo"
+
   get '/section' => 'home#landing', :constraints => { :subdomain => /.+/ }  
   get '/feed' => 'home#landing', :constraints => { :subdomain => /.+/ }  
 

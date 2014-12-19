@@ -1,0 +1,53 @@
+<div class="container">
+
+
+  <div class="row">
+    <button class='btn btn-primary pull-right' style="" {{action 'startChattyMapCreation' }} title="">
+      <i class="fa fa-plus"></i>Create your own map
+    </button>
+    <button class='btn btn-primary pull-right' style="" {{action 'showHelpForCreateMap' }} title="">
+      <i class="fa fa-plus"></i>? help..
+    </button>
+  </div>
+  <div class="row">
+    <h1 class="maps-list-header" style="">
+    Conversations in this section
+  </h1>
+
+  </div>
+
+
+
+  {{#each topic in model.geo_topics }}
+  <div class="geo-topic-line">
+    {{#link-to 'sectiontopic.fromParams' topic.slug topic.id }}
+    <div class="row geo-topic-row">
+      <h3 class="topic-list-title">
+      {{ topic.title }}
+    </h3>
+      <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
+
+    </div>
+
+
+    <div style="margin-left: 1%;">
+      {{#each location in topic.locations }}
+      <span class="badge-places">{{ location.title }} <i class="fa fa-map-marker"></i></span> {{/each}}
+
+      <div class="pull-right">
+        <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
+        <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
+        <span class="badge-posts">last post on: {{format-date topic.last_posted_at }}</span>
+      </div>
+    </div>
+
+    <div class="geo-topic-sep"></div>
+    {{/link-to}}
+
+  </div>
+
+  {{/each}} 
+
+  {{ outlet }}
+
+</div>

@@ -9,5 +9,18 @@ Discourse.Route.buildRoutes(function() {
     //   path: '/:geo'
     // });
   });
-});
+  // Topic routes
+  this.resource('sectiontopic', { path: '/tt/:slug/:id' }, function() {
+    this.route('fromParams', { path: '/' });
+    this.route('fromParamsNear', { path: '/:nearPost' });
+  });
+  this.resource('sectiontopicBySlug', { path: '/tt/:slug' });
 
+  // this.resource('sectiontopic', {
+  //   path: '/tt/:slug'
+  // }, function() {
+  //   this.route('item', {
+  //     path: '/'
+  //   });
+  // });
+});
