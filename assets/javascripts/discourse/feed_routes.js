@@ -25,6 +25,12 @@ Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
   //   return { val: 'recent' };
   // },
   setupController: function(controller, model) {
-    controller.set('content', model);
+    debugger;
+    if (model.category_flag === "unclaimed") {
+      this.transitionTo('claim');
+
+    } else {
+    controller.set('content', model);      
+    };
   }
 });

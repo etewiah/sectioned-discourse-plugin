@@ -12,6 +12,7 @@ load File.expand_path('../lib/sectioned/engine.rb', __FILE__)
 
 
 # register_asset "javascripts/router.js"
+register_asset "javascripts/discourse/templates/claim.js.handlebars"
 register_asset "javascripts/discourse/templates/components/home-logo.js.handlebars"
 register_asset "javascripts/discourse/feed_routes.js"
 register_asset "javascripts/discourse/feed_views.js"

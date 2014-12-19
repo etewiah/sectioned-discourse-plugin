@@ -4,7 +4,12 @@ module Sectioned
     # before_action :check_user, only: [:update_geo_places]
 
     def get_section_topics
-      
+      subdomain = request.subdomain.downcase
+      category = Category.where(:name_lower => subdomain).first
+      unless category
+        return  render json: { category_flag: 'unclaimed'}
+      end
+
       section_topics =  Topic.where("deleted_at" => nil)
       .where("visible")
       .where("archetype <> ?", Archetype.private_message)
