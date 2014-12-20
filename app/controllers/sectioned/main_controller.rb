@@ -14,7 +14,8 @@ module Sectioned
     end
 
     def claim_section
-      section_name = "ed"
+      section_name = request.subdomain
+       # "ed"
       # TODO - figure out r/n b/n sectionname and catname
       binding.pry
       # guardian.ensure_can_create!(Category)
@@ -32,6 +33,8 @@ module Sectioned
         # end
       end
       return render_json_error(@category) unless @category.save
+      @category.topic.visible = false
+      @category.topic.save
 
       # @category.move_to(position.to_i) if position
       render_serialized(@category, CategorySerializer)

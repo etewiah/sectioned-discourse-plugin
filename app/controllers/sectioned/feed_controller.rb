@@ -9,17 +9,20 @@ module Sectioned
       unless category
         return  render json: { category_flag: 'unclaimed'}
       end
-
-      section_topics =  Topic.where("deleted_at" => nil)
-      .where("visible")
-      .where("archetype <> ?", Archetype.private_message)
-      .limit(10)
+      section_topics = category.topics.where("visible")
+      about_topic = category.topic
+      # section_topics =  Topic.where("deleted_at" => nil)
+      # .where("visible")
+      # .where("archetype <> ?", Archetype.private_message)
+      # .where(:category_id => category.id)
+      # # .limit(10)
 
       geo_topic_list_serialized = serialize_data(section_topics, TopicListItemSerializer)
 
       # render_serialized(geo_topic_list, MapTopic::LocationTopicListSerializer,  root: 'geo_topic_list')
       return render_json_dump({
-                                "section_topics" => geo_topic_list_serialized,
+        "section_topics" => geo_topic_list_serialized,
+        "about_topic" => about_topic.to_json
       })
 
     end
