@@ -1,9 +1,23 @@
 Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
   actions: {
     createTopic: function() {
-      // debugger;
+      debugger;
       // this.openComposer(this.controllerFor('feed/root'));
-      this.openComposer(this.controller);
+      // this.openComposer(this.controller);
+
+      // this.controllerFor('composer').open({
+      //   categoryId: controller.get('category.id'),
+      //   action: Discourse.Composer.CREATE_TOPIC,
+      //   draftKey: controller.get('draft_key'),
+      //   draftSequence: controller.get('draft_sequence')
+      // });
+
+      this.controllerFor('composer').open({
+        categoryId: this.controller.get('content.category.id'),
+        action: Discourse.Composer.CREATE_TOPIC,
+        draftKey: "new_topic",
+        draftSequence: 1
+      });
     }
   },
   model: function(params) {

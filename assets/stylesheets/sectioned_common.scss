@@ -1,3 +1,13 @@
+/*don't allow selection of categories*/
+.category-input{
+  display: none;
+}
+/*hide the annoying popups when composing*/
+.composer-popup-container {
+  display: none;
+}
+
+
 .ptr:hover {
     cursor: pointer;
     cursor: hand;

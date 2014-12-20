@@ -22,7 +22,8 @@ module Sectioned
       # render_serialized(geo_topic_list, MapTopic::LocationTopicListSerializer,  root: 'geo_topic_list')
       return render_json_dump({
         "section_topics" => geo_topic_list_serialized,
-        "about_topic" => about_topic.to_json
+        "about_topic" => about_topic.as_json,
+        "category" => category.as_json
       })
 
     end
