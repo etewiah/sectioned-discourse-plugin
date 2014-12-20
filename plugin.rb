@@ -27,11 +27,19 @@ register_asset "stylesheets/sectioned_common.scss"
 
 # And mount the engine
 Discourse::Application.routes.append do
-    mount Sectioned::Engine, at: '/'
+  mount Sectioned::Engine, at: '/'
 end
 
 after_initialize do
   require_dependency File.expand_path('../integrate_sectioned_plugin.rb', __FILE__)
   # load File.expand_path("../app/jobs/sectioned/update_categories.rb", __FILE__)
   # load File.expand_path("../app/jobs/sectioned/corrections.rb", __FILE__)
+
+# below did not work:
+  # Auth::DefaultCurrentUserProvider.class_eval do
+  #   def log_off_user(session, cookies)
+  #     binding.pry
+  #     cookies[TOKEN_COOKIE] = { value: nil, domain: ".lvh.me" }
+  #   end
+  # end
 end

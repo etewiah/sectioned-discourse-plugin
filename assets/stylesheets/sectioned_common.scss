@@ -1,3 +1,11 @@
+/*hide suggested topics */
+#suggested-topics{
+  display: none;
+}
+/* hide categories in topic */
+#topic-title a.badge-category {
+  display: none;
+}
 /*don't allow selection of categories*/
 .category-input{
   display: none;

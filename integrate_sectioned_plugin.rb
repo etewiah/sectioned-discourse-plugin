@@ -1,3 +1,33 @@
+module SectionedAuth
+
+  require_dependency "auth/current_user_provider"
+
+  class SubDomainCurrentUserProvider  < Auth::DefaultCurrentUserProvider
+    ::AUTH_DOMAIN = Rails.env.development? ? ".lvh.me" : ".klavado.com"
+
+
+    def log_off_user(session, cookies)
+      binding.pry
+      cookies[TOKEN_COOKIE] = { value: nil, domain: ".lvh.me" }
+    end
+
+    def log_on_user(user, session, cookies)
+      binding.pry
+
+      unless user.auth_token && user.auth_token.length == 32
+        user.auth_token = SecureRandom.hex(16)
+        user.save!
+      end
+      cookies.permanent[TOKEN_COOKIE] = { value: user.auth_token, httponly: true, domain: ".lvh.me" }
+      make_developer_admin(user)
+      @env[CURRENT_USER_KEY] = user
+    end
+
+  end
+end
+
+Discourse.current_user_provider = SectionedAuth::SubDomainCurrentUserProvider
+binding.pry
 
 module ApplicationControllerExtender
   def self.included(klass)
@@ -13,9 +43,9 @@ module ApplicationControllerExtender
     # section_details = render_json_dump({
     #   "subdomain" => subdomain
     # })
-binding.pry
+    # binding.pry
     section_details = {
-          "subdomain" => subdomain
+      "subdomain" => subdomain
     }
     @preloaded ||= {}
     @preloaded["section_details"] = section_details.to_json
