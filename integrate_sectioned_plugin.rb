@@ -7,12 +7,10 @@ module SectionedAuth
 
 
     def log_off_user(session, cookies)
-      binding.pry
       cookies[TOKEN_COOKIE] = { value: nil, domain: ::AUTH_DOMAIN }
     end
 
     def log_on_user(user, session, cookies)
-      binding.pry
 
       unless user.auth_token && user.auth_token.length == 32
         user.auth_token = SecureRandom.hex(16)
@@ -27,11 +25,9 @@ module SectionedAuth
 end
 
 Discourse.current_user_provider = SectionedAuth::SubDomainCurrentUserProvider
-binding.pry
 
 module ApplicationControllerExtender
   def self.included(klass)
-    # binding.pry
     klass.send(:before_filter, :get_section_from_subdomain)
     # klass.append_before_filter :get_section_from_subdomain
   end
@@ -43,7 +39,6 @@ module ApplicationControllerExtender
     # section_details = render_json_dump({
     #   "subdomain" => subdomain
     # })
-    # binding.pry
     section_details = {
       "subdomain" => subdomain
     }

@@ -10,9 +10,7 @@ module Sectioned
     # hardly gets hit though...
     # TODO - render useful serverside content for search engine etc..
     def landing
-      binding.pry
       subdomain = request.subdomain
-      # binding.pry
       render json: { status: 'ok', subdomain: subdomain}
     end
 
