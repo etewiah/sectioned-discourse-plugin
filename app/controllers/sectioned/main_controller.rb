@@ -2,9 +2,12 @@ module Sectioned
   class MainController < ApplicationController
     include CurrentUser
     # before_action :get_section_from_subdomain
+
+    # below check seems to redirect to main domain if user not authenticated
     # before_action :ensure_logged_in, only: [:claim_section]
 
     # end point for routes that are only implemented client side
+    # hardly gets hit though...
     # TODO - render useful serverside content for search engine etc..
     def landing
       binding.pry
@@ -14,10 +17,11 @@ module Sectioned
     end
 
     def claim_section
+      return render_json_error('unauthenticated') unless current_user
+
       section_name = request.subdomain
        # "ed"
       # TODO - figure out r/n b/n sectionname and catname
-      binding.pry
       # guardian.ensure_can_create!(Category)
 
       # position = category_params.delete(:position)

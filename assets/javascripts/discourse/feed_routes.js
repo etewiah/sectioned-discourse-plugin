@@ -12,12 +12,29 @@ Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
       //   draftSequence: controller.get('draft_sequence')
       // });
 
-      this.controllerFor('composer').open({
-        categoryId: this.controller.get('content.category.id'),
-        action: Discourse.Composer.CREATE_TOPIC,
-        draftKey: "new_topic",
-        draftSequence: 1
-      });
+      if (Discourse.User.current()) {
+
+        var composerController = this.get('controllers.composer');
+        var self = this;
+        composerController.open({
+          categoryId: this.controller.get('content.category.id'),
+          action: Discourse.Composer.CREATE_TOPIC,
+          draftKey: "new_topic",
+          draftSequence: 1
+        }).then(function() {
+          debugger;
+          // composerController.appendText('slightly longer ...New event weee');
+          // as this is about no gig in particular...:
+          // composerController.content.set('gig', {
+          //   id: 0
+          // });
+        });
+      } else {
+        this.send('showLogin');
+      }
+
+
+
     }
   },
   model: function(params) {
