@@ -49,7 +49,7 @@ default {
       //   latitude: "40.4167754",
       //   country: "Spain",
       // },
-      defaultCityName: 'madrid',
+      // defaultCityName: 'madrid',
 
     };
   }

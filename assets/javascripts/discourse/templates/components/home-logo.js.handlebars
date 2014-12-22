@@ -1,15 +1,41 @@
-{{#link-to 'feed.root'  }}
-<div>
-  <h1  style="padding-top: 6%;margin-left: 15px;font-style: italic;color:#494949;">
-  Section</h1>
-</div>
-{{/link-to}}
+{{#if inRootDomain}}
 
-{{#unless showSmallLogo }}
-{{#unless showMobileLogo}}
-<div>
-  <h3  style="padding-top: 6%;margin-left: 15px;font-style: italic;color:#494949;">
-  Putting conversations on the map</h3>
-</div>
-{{/unless}}
-{{/unless}}
+	<a href="{{unbound linkUrl}}" data-auto-route="true">
+	  {{#if showSmallLogo}}
+	    {{#if smallLogoUrl}}
+	      <img class="logo-small" src="{{unbound smallLogoUrl}}" width="33" height="33">
+	    {{else}}
+	      <i class="fa fa-home"></i>
+	    {{/if}}
+	  {{else}}
+	    {{#if showMobileLogo}}
+	      <img id="site-logo" class="logo-big" src="{{unbound mobileBigLogoUrl}}" alt="{{unbound title}}">
+	    {{else}}
+	      {{#if bigLogoUrl}}
+	        <img id="site-logo" class="logo-big" src="{{unbound bigLogoUrl}}" alt="{{unbound title}}">
+	      {{else}}
+	        <h2 id="site-text-logo" class="text-logo">{{unbound title}}</h2>
+	      {{/if}}
+	    {{/if}}
+	  {{/if}}
+	</a>
+	{{#unless showSmallLogo }}
+	{{#unless showMobileLogo}}
+	<div>
+	  <h3  style="padding-top: 6%;margin-left: 15px;font-style: italic;color:#494949;">
+	  Instant Discourse</h3>
+	</div>
+	{{/unless}}
+	{{/unless}}
+
+{{else}}
+
+	{{#link-to 'feed.root'  }}
+	<div>
+	  <h1  style="padding-top: 6%;margin-left: 15px;font-style: italic;color:#494949;">
+	  {{ sectionHeader }}</h1>
+	</div>
+	{{/link-to}}
+
+
+{{/if}}
