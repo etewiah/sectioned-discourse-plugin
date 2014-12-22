@@ -1,4 +1,5 @@
 Discourse.Route.buildRoutes(function() {
+  this.resource('welcome', {path: '/welcome'});
   this.resource('claim', {path: '/claim'});
   this.resource('feed', {
     path: '/feed'

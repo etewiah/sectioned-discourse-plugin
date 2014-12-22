@@ -5,6 +5,8 @@ Sectioned::Engine.routes.draw do
   get '/section' => 'main#landing', :constraints => { :subdomain => /.+/ }  
   get '/feed' => 'main#landing', :constraints => { :subdomain => /.+/ }  
   get '/claim' => 'main#landing', :constraints => { :subdomain => /.+/ }  
+  get '/welcome' => 'main#landing'
+
 
   # TODO - make below a post
   get '/claim_section' => 'main#claim_section', :constraints => { :subdomain => /.+/ }  
