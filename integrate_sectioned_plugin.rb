@@ -8,7 +8,7 @@ module SectionedAuth
 
     def log_off_user(session, cookies)
       binding.pry
-      cookies[TOKEN_COOKIE] = { value: nil, domain: ".lvh.me" }
+      cookies[TOKEN_COOKIE] = { value: nil, domain: ::AUTH_DOMAIN }
     end
 
     def log_on_user(user, session, cookies)
@@ -18,7 +18,7 @@ module SectionedAuth
         user.auth_token = SecureRandom.hex(16)
         user.save!
       end
-      cookies.permanent[TOKEN_COOKIE] = { value: user.auth_token, httponly: true, domain: ".lvh.me" }
+      cookies.permanent[TOKEN_COOKIE] = { value: user.auth_token, httponly: true, domain: ::AUTH_DOMAIN }
       make_developer_admin(user)
       @env[CURRENT_USER_KEY] = user
     end
