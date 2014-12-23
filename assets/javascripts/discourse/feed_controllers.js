@@ -1,4 +1,7 @@
 Discourse.ClaimController = Discourse.ObjectController.extend({
+  sectionName: function() {
+    return Discourse.SubdomainInfo.currentSubdomain().capitalize();
+  }.property(),
   actions: {
     claimSection: function() {
       if (Discourse.User.current()) {

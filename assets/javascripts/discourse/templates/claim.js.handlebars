@@ -1,50 +1,27 @@
-<div class="container">
+
+<div style="" id="wrap-splash">
 
 
-  <div class="row">
-    <button class='btn btn-primary pull-right' style="" {{action 'claimSection' }} title="">
+  <section>
+    <div class="hpcontent">
+
+      <div id="content-splash" 
+      style="max-width: 60%;text-align: center;min-height: 200px;" class="splash-outer">
+          <div class="splash-inner" id="splash-welcome" style="margin-bottom:550px">
+            <h1 style="color: #090;font-size: 4em;text-align: center;">
+              {{ sectionName }} <small style="font-size:0.5em"> is available</small> </h1>
+
+    <button class='btn btn-primary btn-lg' style="margin-top:30px;padding:20px;min-width: 300px;font-size:22px" {{action 'claimSection' }} title="">
       <i class="fa fa-plus"></i>Claim this section
     </button>
-  </div>
-  <div class="row">
-    <h1 class="maps-list-header" style="">
-    Claim this section
-  </h1>
 
-  </div>
+          </div>
 
-
-
-  {{#each topic in model.section_topics }}
-  <div class="geo-topic-line">
-    {{#link-to 'topic.fromParams' topic.slug topic.id }}
-    <div class="row geo-topic-row">
-      <h3 class="topic-list-title">
-      {{ topic.title }}
-    </h3>
-      <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
-
-    </div>
-
-
-    <div style="margin-left: 1%;">
-      {{#each location in topic.locations }}
-      <span class="badge-places">{{ location.title }} <i class="fa fa-map-marker"></i></span> {{/each}}
-
-      <div class="pull-right">
-        <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
-        <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
-        <span class="badge-posts">last post on: {{format-date topic.last_posted_at }}</span>
       </div>
+
     </div>
+  </section>
 
-    <div class="geo-topic-sep"></div>
-    {{/link-to}}
-
-  </div>
-
-  {{/each}} 
-
-  {{ outlet }}
 
 </div>
+
