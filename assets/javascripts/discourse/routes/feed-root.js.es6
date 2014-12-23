@@ -1,7 +1,8 @@
-Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
+export default Discourse.Route.extend(Discourse.OpenComposer, {
+
+// Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
   actions: {
     createTopic: function() {
-      debugger;
       // this.openComposer(this.controllerFor('feed/root'));
       // this.openComposer(this.controller);
 
@@ -14,7 +15,8 @@ Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
 
       if (Discourse.User.current()) {
 
-        var composerController = this.get('controllers.composer');
+        var composerController = this.controllerFor('composer');
+        // this.get('controllers.composer');
         var self = this;
         composerController.open({
           categoryId: this.controller.get('content.category.id'),
@@ -32,9 +34,6 @@ Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
       } else {
         this.send('showLogin');
       }
-
-
-
     }
   },
   model: function(params) {

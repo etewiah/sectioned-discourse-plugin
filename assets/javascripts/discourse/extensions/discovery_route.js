@@ -3,11 +3,13 @@ Discourse.DiscoveryRoute.reopen({
     // to ensure that when discovery route is handling '/'
     //  it redirects to feed.root
     if (location.pathname === "/") {
-      var parts = location.hostname.split('.');
-      if (parts.length > 2) {
+      // var parts = location.hostname.split('.');
+      // if (parts.length > 2) {
+      //   this.transitionTo('feed.root');
+      // }
+      if (Discourse.SubdomainInfo.inSubdomain()) {
         this.transitionTo('feed.root');
-      }
-      else{
+      } else {
         this.transitionTo('welcome');
       }
       // if (transition.targetName.indexOf('discovery.latest') !== -1) {
