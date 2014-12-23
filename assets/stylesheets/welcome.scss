@@ -1,0 +1,81 @@
+/*h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica-, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit
+}
+h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, .h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .h3 .small, .h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
+  font-weight: 400;
+  line-height: 1;
+  color: #999
+}
+a:hover {
+  text-decoration: none;
+}
+html * {
+  font-family: 'Open Sans';
+}*/
+
+.hpcontent p {
+  font-family: monospace;
+  text-align: left;
+}
+
+.hpcontent li {
+  font-family: monospace;
+  text-align: left;
+  list-style: none;
+}
+
+.splash-outer{
+  max-width: 80%;
+  overflow: hidden;
+  float: none;
+  color: #FFFFFF;
+  position: relative;
+  margin: 0 auto;
+  clear: both;
+  z-index: 0;
+}
+
+#wrap-splash h1 {
+  padding-bottom: 20px;
+}
+#wrap-splash h2, h3 {
+  font-weight: normal;
+}
+
+
+#wrap-splash {
+  margin-top: -20px;
+  /*background-image: url(/img/autumn_bench_medium.jpeg);*/
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top left;
+  text-rendering: optimizeLegibility;
+  background-color: #6b96c2;
+  opacity: 0.9;
+}
+.splash-inner{
+  margin-top: 50px;
+  background: rgba(14, 14, 14, 0.9);
+  float: none;
+  /*margin: 0 auto;*/
+  border: 0px solid #222;
+  /*margin: 125px 145px 300px 145px;*/
+  
+  padding: 30px 30px 20px 30px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC222222,endColorstr=#CC222222)"
+}
+
+.splash-well {
+  background: rgba(14, 14, 14, 1);
+  color: white;
+  border: 0;
+}
