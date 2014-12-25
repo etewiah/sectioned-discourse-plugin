@@ -16,9 +16,9 @@
 
 
   {{#each topic in model.section_topics }}
-  <div class="geo-topic-line">
+  <div class="section-topic-line">
     {{#link-to 'topic.fromParams' topic.slug topic.id }}
-    <div class="row geo-topic-row">
+    <div class="row section-topic-row">
       <h3 class="topic-list-title">
       {{ topic.title }}
     </h3>
@@ -38,7 +38,6 @@
       </div>
     </div>
 
-    <div class="geo-topic-sep"></div>
     {{/link-to}}
 
   </div>

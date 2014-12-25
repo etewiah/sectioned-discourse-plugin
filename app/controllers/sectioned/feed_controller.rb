@@ -17,7 +17,7 @@ module Sectioned
       # .where(:category_id => category.id)
       # # .limit(10)
 
-      geo_topic_list_serialized = serialize_data(section_topics, TopicListItemSerializer)
+      geo_topic_list_serialized = serialize_data(section_topics, Sectioned::SectionTopicItemSerializer)
 
       # render_serialized(geo_topic_list, MapTopic::LocationTopicListSerializer,  root: 'geo_topic_list')
       return render_json_dump({
@@ -31,24 +31,6 @@ module Sectioned
 
 
     private
-
-    # def get_nearest_location_to_request
-    #   # if request.location && request.location.data['longitude'] != "0"
-    #   #   center_point = [request.location.data['latitude'],request.location.data['longitude']]
-    #   #   return MapTopic::LocationTopic.where(:location_id => 0).near(center_point,5000).first
-    #   # else
-    #   #   return MapTopic::LocationTopic.where(:location_title =>'berlin',:location_id => 0).first
-    #   # end
-    #   request_location = Geocoder.search(request.remote_ip).first
-
-    #   if request_location && request_location.data['longitude'] != "0"
-    #     center_point = [request_location.data['latitude'],request_location.data['longitude']]
-    #     nearest_location = MapTopic::GeoKey.near(center_point,5000).first
-    #   end
-    #   return nearest_location
-
-    # end
-
 
     def ensure_geo_key_exists(geo_name)
       geo_key= MapTopic::GeoKey.where(:city_lower => geo_name.downcase).first
