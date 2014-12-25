@@ -6,6 +6,7 @@ default {
 
   initialize: function() {
     var parts = location.hostname.split('.');
+    // if subdomain of a subdomain (like mad.spain.kl.com), redirect to top level domain
     if (parts.length > 3) {
       var rootDomain = parts[parts.length - 2] + "." + parts[parts.length - 1];
       var rootUrl = window.location.protocol + "//" + rootDomain;

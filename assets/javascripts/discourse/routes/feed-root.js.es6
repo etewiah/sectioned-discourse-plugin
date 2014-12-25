@@ -1,6 +1,10 @@
 export default Discourse.Route.extend(Discourse.OpenComposer, {
-
-// Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
+  // Discourse.FeedRootRoute = Discourse.Route.extend(Discourse.OpenComposer, {
+  beforeModel: function(transition) {
+    if (!Discourse.SubdomainInfo.inSubdomain()) {
+      this.transitionTo('welcome');
+    }
+  },
   actions: {
     createTopic: function() {
       // this.openComposer(this.controllerFor('feed/root'));

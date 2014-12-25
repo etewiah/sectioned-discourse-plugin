@@ -1,6 +1,5 @@
 export default Discourse.Route.extend({
   beforeModel: function() {
-    debugger;
     if (Discourse.SubdomainInfo.inSubdomain()) {
       this.transitionTo('feed.root');
     } 
