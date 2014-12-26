@@ -1,8 +1,8 @@
 <div style="" id="wrap-splash">
 <div class="container">
+{{#if controller.isAvailable }}
   <section>
     <div class="hpcontent">
-
       <div id="content-splash" 
       style="max-width: 60%;text-align: center;min-height: 200px;" class="splash-outer">
           <div class="splash-inner" id="splash-welcome" style="margin-bottom:550px">
@@ -10,7 +10,7 @@
               {{ sectionName }} <small style="font-size:0.5em"> is available</small> </h1>
 
     <button class='btn btn-primary btn-lg' style="margin-top:30px;padding:20px;min-width: 300px;font-size:22px" {{action 'claimSection' }} title="">
-      <i class="fa fa-plus"></i>Claim this section
+      <i class="fa fa-plus"></i>Claim this room.
     </button>
 
           </div>
@@ -19,6 +19,23 @@
 
     </div>
   </section>
+
+{{else}}
+  <section>
+    <div class="hpcontent">
+      <div id="content-splash" 
+      style="max-width: 60%;text-align: center;min-height: 200px;" class="splash-outer">
+          <div class="splash-inner" id="splash-welcome" style="margin-bottom:550px">
+            <h1 style="color: #090;font-size: 4em;text-align: center;">
+              {{ sectionName }} <small style="font-size:0.5em"> is not available</small> </h1>
+          </div>
+
+      </div>
+
+    </div>
+  </section>
+{{/if}}
+
 </div>
 </div>
 

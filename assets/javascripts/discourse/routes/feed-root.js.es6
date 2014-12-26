@@ -55,10 +55,8 @@ export default Discourse.Route.extend(Discourse.OpenComposer, {
       }
     });
   },
-  // serialize: function(model) {
-  //   return { val: 'recent' };
-  // },
   setupController: function(controller, model) {
+    debugger;
     if (model.category_flag === "unclaimed") {
       this.transitionTo('claim');
     } else {

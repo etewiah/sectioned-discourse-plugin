@@ -2,8 +2,8 @@ module Sectioned
   class SectionTopicItemSerializer < ApplicationSerializer
     attributes :category_id, 
       # :capability, 
+      :id,
       :views,
-      # attributes :views,
       :like_count,
       :title,
       :excerpt,
