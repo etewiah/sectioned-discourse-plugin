@@ -1,4 +1,23 @@
 export default Discourse.Route.extend({
+	 actions: {
+    claimSection: function() {
+      Discourse.Route.showModal(this, 'claimModal', this.get('controller.model'));
+      if (Discourse.User.current()) {
+
+        // var url = Discourse.getURL("/claim_section");
+        // var result = Discourse.ajax(url, {});
+        // var self = this;
+        // result.then(function(category) {
+        //   // TODO - test for success
+        //   debugger;
+        //   self.transitionToRoute('feed.root');
+        // })
+      } else {
+        this.send('showLogin');
+      }
+
+    }
+  },
   beforeModel: function() {
     // if we are in TLD, do not proceed with claim route, go to welcome route instead
     if (!Discourse.SubdomainInfo.inSubdomain()) {

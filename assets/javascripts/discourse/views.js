@@ -10,3 +10,9 @@ Discourse.WelcomeView = Discourse.View.extend({
   templateName: 'welcome',
   // contentBinding: 'controller.content',
 });
+
+
+Discourse.ClaimModalView =  Discourse.ModalBodyView.extend({
+  templateName: 'modals/claim',
+  title: 'Claim this room'
+});

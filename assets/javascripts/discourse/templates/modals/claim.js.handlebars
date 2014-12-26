@@ -1,0 +1,65 @@
+<div class="modal-body">
+
+  <div>
+
+    <div class="row">
+      <form {{action "confirmPlaceDetails" on="submit" }}>
+        <div style="width: 100%;">
+          <div>
+            <div style="" class="label">
+              <label for='happening-title'>
+                Name:
+              </label>
+            </div>
+          </div>
+
+          <div class="input">
+            <div style="">
+              {{text-field value=happeningDetails.title id="happening-title" autofocus="autofocus"}} {{input-tip validation=titleValidation}}
+            </div>
+          </div>
+
+          <div>
+            <label>Start</label>
+          </div>
+
+          <div>
+            <label>End</label>
+          </div>
+
+
+
+
+          <div>
+            <div style="" class="label">
+              <label for='happening-url'>
+                Website:
+              </label>
+            </div>
+          </div>
+
+          <div class="input">
+            <div style="">
+              {{text-field value=happeningDetails.url id="happening-url" autofocus="autofocus"}} {{input-tip validation=titleValidation}}
+            </div>
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button class='btn btn-primary' style="margin-top: 6px;margin-right: 6px;" {{action 'addHappening' }} title="">
+    Save
+  </button>
+  <button class='btn' {{action 'closeModal' }} style="">
+    {{fa-icon trash label="" }}Cancel
+  </button>
+</div>
+
+
