@@ -22,10 +22,9 @@ export default Discourse.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('content', model);
-    debugger;
     if (model && model.category) {
       controller.set('isAvailable', false);
-      this.transitionTo('feed.root', model);
+      // this.transitionTo('feed.root', model);
     } else {
       controller.set('isAvailable', true);
     }
