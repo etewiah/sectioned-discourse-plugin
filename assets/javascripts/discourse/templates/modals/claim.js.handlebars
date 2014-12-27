@@ -1,49 +1,25 @@
 <div class="modal-body">
-
   <div>
-
     <div class="row">
-      <form {{action "confirmPlaceDetails" on="submit" }}>
+      <form {{action "startClaim" on="submit" }}>
         <div style="width: 100%;">
           <div>
             <div style="" class="label">
-              <label for='happening-title'>
-                Name:
+              <label for='room-description'>
+                Brief description of what this discourse room is about:
               </label>
             </div>
           </div>
 
           <div class="input">
             <div style="">
-              {{text-field value=happeningDetails.title id="happening-title" autofocus="autofocus"}} {{input-tip validation=titleValidation}}
+              {{text-field value=roomDetails.description id="room-description" autofocus="autofocus"}} {{input-tip validation=descriptionValidation}}
             </div>
           </div>
 
           <div>
-            <label>Start</label>
+            <label>Please note that Klavado is currently in Beta and there are no guarantees about how long data on this site will be saved for.</label>
           </div>
-
-          <div>
-            <label>End</label>
-          </div>
-
-
-
-
-          <div>
-            <div style="" class="label">
-              <label for='happening-url'>
-                Website:
-              </label>
-            </div>
-          </div>
-
-          <div class="input">
-            <div style="">
-              {{text-field value=happeningDetails.url id="happening-url" autofocus="autofocus"}} {{input-tip validation=titleValidation}}
-            </div>
-          </div>
-
 
         </div>
       </form>
@@ -54,8 +30,8 @@
 </div>
 
 <div class="modal-footer">
-  <button class='btn btn-primary' style="margin-top: 6px;margin-right: 6px;" {{action 'addHappening' }} title="">
-    Save
+  <button class='btn btn-primary' style="margin-top: 6px;margin-right: 6px;" {{action 'startClaim' }} title="">
+    Claim
   </button>
   <button class='btn' {{action 'closeModal' }} style="">
     {{fa-icon trash label="" }}Cancel

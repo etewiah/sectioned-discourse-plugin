@@ -18,6 +18,7 @@ module Sectioned
       return render_json_error('unauthenticated') unless current_user
 
       section_name = request.subdomain
+      binding.pry
        # "ed"
       # TODO - figure out r/n b/n sectionname and catname
       # guardian.ensure_can_create!(Category)

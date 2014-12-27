@@ -1,17 +1,21 @@
 export default Discourse.Route.extend({
-	 actions: {
-    claimSection: function() {
-      Discourse.Route.showModal(this, 'claimModal', this.get('controller.model'));
+  actions: {
+    claimRoom: function(roomDetails) {
+      debugger;
+      var url = Discourse.getURL("/claim_section");
+      var result = Discourse.ajax(url, {
+      	roomDetails: roomDetails
+      });
+      var self = this;
+      result.then(function(category) {
+        // TODO - test for success
+        debugger;
+        self.transitionToRoute('feed.root');
+      })
+    },
+    showClaimModal: function() {
       if (Discourse.User.current()) {
-
-        // var url = Discourse.getURL("/claim_section");
-        // var result = Discourse.ajax(url, {});
-        // var self = this;
-        // result.then(function(category) {
-        //   // TODO - test for success
-        //   debugger;
-        //   self.transitionToRoute('feed.root');
-        // })
+	      Discourse.Route.showModal(this, 'claimModal', this.get('controller.model'));
       } else {
         this.send('showLogin');
       }
