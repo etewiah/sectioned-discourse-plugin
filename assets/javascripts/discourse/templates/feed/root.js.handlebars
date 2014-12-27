@@ -1,49 +1,67 @@
 <div class="container">
 
+  {{#if controller.noTopics }}
+  
+    <section>
+      <div class="hpcontent">
+        <div id="content-splash" 
+        style="max-width: 60%;text-align: center;min-height: 200px;" class="splash-outer">
+            <div class="splash-inner" id="splash-welcome" style="margin-bottom:550px">
+              <h1 style="color: #090;font-size:3em;text-align: center;margin-bottom: 20px;">
+                {{ model.category.name }} <small style="font-size:0.5em"> {{ model.category.description }} </small> </h1>
+                <p>There are no conversations yet in this room.</p>
+                <p>Get the ball rolling by <a {{action 'createTopic'}} > starting one.</a> </p>
 
-  <div class="row">
-    <button class='btn btn-primary pull-right' style="" {{action 'createTopic' }} title="">
-      <i class="fa fa-plus"></i>New Topic
-    </button>
-  </div>
-  <div class="row">
-    <h1 class="maps-list-header" style="">
-    Conversations in this section
-  </h1>
-
-  </div>
-
-
-
-  {{#each topic in model.section_topics }}
-  <div class="section-topic-line">
-    {{#link-to 'topic.fromParams' topic.slug topic.id }}
-    <div class="row section-topic-row">
-      <h3 class="topic-list-title">
-      {{ topic.title }}
-    </h3>
-      <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
-
-    </div>
-
-
-    <div style="margin-left: 1%;">
-      {{#each location in topic.locations }}
-      <span class="badge-places">{{ location.title }} <i class="fa fa-map-marker"></i></span> {{/each}}
-
-      <div class="pull-right">
-        <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
-        <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
-        <span class="badge-posts">last post on: {{format-date topic.last_posted_at }}</span>
+            </div>
+        </div>
       </div>
+    </section>
+
+  {{else}}
+    <div class="row">
+      <button class='btn btn-primary pull-right' style="" {{action 'createTopic' }} title="">
+        <i class="fa fa-plus"></i>New Conversation
+      </button>
+    </div>
+    <div class="row">
+      <h1 class="maps-list-header" style="">
+      Conversations in this section
+    </h1>
+
     </div>
 
-    {{/link-to}}
 
-  </div>
 
-  {{/each}} 
+    {{#each topic in model.section_topics }}
+    <div class="section-topic-line">
+      {{#link-to 'topic.fromParams' topic.slug topic.id }}
+      <div class="row section-topic-row">
+        <h3 class="topic-list-title">
+        {{ topic.title }}
+      </h3>
+        <p class="topic-excerpt ">{{{ topic.excerpt }}}</p>
 
-  {{ outlet }}
+      </div>
+
+
+      <div style="margin-left: 1%;">
+        {{#each location in topic.locations }}
+        <span class="badge-places">{{ location.title }} <i class="fa fa-map-marker"></i></span> {{/each}}
+
+        <div class="pull-right">
+          <span class="badge-posts">{{ topic.views }}  <i class="fa fa-eye"></i></span>
+          <span class="badge-posts">{{ topic.posts_count }} <i class="fa fa-comments"></i></span>
+          <span class="badge-posts">last post on: {{format-date topic.last_posted_at }}</span>
+        </div>
+      </div>
+
+      {{/link-to}}
+
+    </div>
+
+    {{/each}} 
+
+ {{/if}}
+
 
 </div>

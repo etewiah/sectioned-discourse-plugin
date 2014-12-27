@@ -57,10 +57,15 @@ export default Discourse.Route.extend(Discourse.OpenComposer, {
   },
   setupController: function(controller, model) {
     debugger;
-    if (model.category_flag === "unclaimed") {
-      this.transitionTo('claim');
-    } else {
+    if (model.category && model.category.name) {
+      $(document).attr('title', model.category.name);
       controller.set('content', model);
-    };
+      if (model.category.topic_count === 0) {
+        controller.set('noTopics', true);
+        // controller.set('sectionName', Discourse.SubdomainInfo.currentSubdomain().capitalize());
+      };
+    } else {
+      this.transitionTo('claim');
+    }
   }
 });
