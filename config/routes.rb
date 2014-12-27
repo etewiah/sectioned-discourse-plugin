@@ -9,8 +9,9 @@ Sectioned::Engine.routes.draw do
   get '/welcome' => 'main#landing'
 
 
+  post '/claim_section' => 'main#claim_section', :constraints => { :subdomain => /.+/ }  
   # TODO - make below a post
-  get '/claim_section' => 'main#claim_section', :constraints => { :subdomain => /.+/ }  
+  # get '/claim_section' => 'main#claim_section', :constraints => { :subdomain => /.+/ }  
 
     # end point for routes that are only implemented client side
   # TODO - render useful serverside content for search engine etc..

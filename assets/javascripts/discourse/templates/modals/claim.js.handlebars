@@ -13,12 +13,13 @@
 
           <div class="input">
             <div style="">
-              {{text-field value=roomDetails.description id="room-description" autofocus="autofocus"}} {{input-tip validation=descriptionValidation}}
+              {{textarea value=roomDetails.description id="room-description" autofocus="autofocus"}} 
+              {{input-tip validation=descriptionValidation}}
             </div>
           </div>
 
           <div>
-            <label>Please note that Klavado is currently in Beta and there are no guarantees about how long data on this site will be saved for.</label>
+            {{!-- <label>Please note that Klavado is currently in Beta and there are no guarantees about how long data on this site will be saved for.</label> --}}
           </div>
 
         </div>

@@ -4,7 +4,7 @@ module Sectioned
     # before_action :get_section_from_subdomain
 
     # below check seems to redirect to main domain if user not authenticated
-    # before_action :ensure_logged_in, only: [:claim_section]
+    before_action :ensure_logged_in, only: [:claim_section]
 
     # end point for routes that are only implemented client side
     # hardly gets hit though...
@@ -29,7 +29,9 @@ module Sectioned
 
       @category = Category.where(:name => section_name).first_or_initialize
       unless @category.user
-        @category.user_id = User.first.id
+        @category.user_id = current_user.id
+        @category.description = params[:roomDetails][:description]
+        # User.first.id
         # current_user.id
         # if color
         #   @category.color = color

@@ -4,18 +4,21 @@ export default Discourse.Route.extend({
       debugger;
       var url = Discourse.getURL("/claim_section");
       var result = Discourse.ajax(url, {
-      	roomDetails: roomDetails
+        data: {
+          roomDetails: roomDetails
+        },
+        method: 'POST'
       });
       var self = this;
       result.then(function(category) {
         // TODO - test for success
         debugger;
-        self.transitionToRoute('feed.root');
+        self.transitionTo('feed.root');
       })
     },
     showClaimModal: function() {
       if (Discourse.User.current()) {
-	      Discourse.Route.showModal(this, 'claimModal', this.get('controller.model'));
+        Discourse.Route.showModal(this, 'claimModal', this.get('controller.model'));
       } else {
         this.send('showLogin');
       }
