@@ -28,6 +28,7 @@ export default Discourse.Route.extend(Discourse.OpenComposer, {
           draftKey: "new_topic",
           draftSequence: 1
         }).then(function() {
+          console.log(composerController);
           debugger;
           // composerController.appendText('slightly longer ...New event weee');
           // as this is about no gig in particular...:
@@ -38,6 +39,13 @@ export default Discourse.Route.extend(Discourse.OpenComposer, {
       } else {
         this.send('showLogin');
       }
+    }
+  },
+  titleToken: function() {
+    var model = this.modelFor('feed.root');
+    if (model) {
+      return model.category.name;
+      // .get('category.name');
     }
   },
   model: function(params) {
@@ -56,9 +64,9 @@ export default Discourse.Route.extend(Discourse.OpenComposer, {
     });
   },
   setupController: function(controller, model) {
-    debugger;
     if (model.category && model.category.name) {
-      $(document).attr('title', model.category.name);
+      // $(document).attr('title', model.category.name);
+      // Discourse.set('_docTitle', model.category.name);
       controller.set('content', model);
       if (model.category.topic_count === 0) {
         controller.set('noTopics', true);
