@@ -9,7 +9,8 @@ module Sectioned
       unless category
         return  render json: { category_flag: 'unclaimed'}
       end
-      section_topics = category.topics.where("visible")
+      section_topics = category.topics
+      # .where("visible")
       about_topic = category.topic
       # section_topics =  Topic.where("deleted_at" => nil)
       # .where("visible")

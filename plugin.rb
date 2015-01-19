@@ -31,9 +31,12 @@ register_asset "stylesheets/welcome.scss"
 # register_asset "stylesheets/timepicker.css"
 
 # And mount the engine
-Discourse::Application.routes.append do
+# Discourse::Application.routes.append do
+Discourse::Application.routes.prepend do
   mount Sectioned::Engine, at: '/'
 end
+
+
 
 after_initialize do
   require_dependency File.expand_path('../integrate_sectioned_plugin.rb', __FILE__)
