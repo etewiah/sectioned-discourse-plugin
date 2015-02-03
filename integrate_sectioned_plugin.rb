@@ -1,30 +1,33 @@
-module SectionedAuth
+# class below moved to drive plugin
+# module SectionedAuth
 
-  require_dependency "auth/current_user_provider"
+#   require_dependency "auth/current_user_provider"
 
-  class SubDomainCurrentUserProvider  < Auth::DefaultCurrentUserProvider
-    ::AUTH_DOMAIN = Rails.env.development? ? ".lvh.me" : ".klavado.com"
+#   class SubDomainCurrentUserProvider  < Auth::DefaultCurrentUserProvider
+#     # ::AUTH_DOMAIN = Rails.env.development? ? ".lvh.me" : ".klavado.com"
 
 
-    def log_off_user(session, cookies)
-      cookies[TOKEN_COOKIE] = { value: nil, domain: ::AUTH_DOMAIN }
-    end
+#     def log_off_user(session, cookies)
+#       auth_domain = @env["HTTP_ORIGIN"].split(':')[1].gsub('//','.')
+#       cookies[TOKEN_COOKIE] = { value: nil, domain: auth_domain }
+#     end
 
-    def log_on_user(user, session, cookies)
+#     def log_on_user(user, session, cookies)
+#       auth_domain = @env["HTTP_ORIGIN"].split(':')[1].gsub('//','.')
+#       # Discourse.base_url.split(':')[1].gsub('//','.')
+#       unless user.auth_token && user.auth_token.length == 32
+#         user.auth_token = SecureRandom.hex(16)
+#         user.save!
+#       end
+#       cookies.permanent[TOKEN_COOKIE] = { value: user.auth_token, httponly: true, domain: auth_domain }
+#       make_developer_admin(user)
+#       @env[CURRENT_USER_KEY] = user
+#     end
 
-      unless user.auth_token && user.auth_token.length == 32
-        user.auth_token = SecureRandom.hex(16)
-        user.save!
-      end
-      cookies.permanent[TOKEN_COOKIE] = { value: user.auth_token, httponly: true, domain: ::AUTH_DOMAIN }
-      make_developer_admin(user)
-      @env[CURRENT_USER_KEY] = user
-    end
+#   end
+# end
 
-  end
-end
-
-Discourse.current_user_provider = SectionedAuth::SubDomainCurrentUserProvider
+# Discourse.current_user_provider = SectionedAuth::SubDomainCurrentUserProvider
 
 module ApplicationControllerExtender
   def self.included(klass)
@@ -48,38 +51,3 @@ module ApplicationControllerExtender
   end
 end
 ApplicationController.send(:include, ApplicationControllerExtender)
-
-# # add location to the posts
-# module LocationPostExtender
-#   def self.included(klass)
-#     klass.has_one :location_post, class_name: "::MapTopic::LocationPost"
-#     klass.has_one :location, through: :location_post, class_name: "::MapTopic::Location"
-
-#     # 7 oct 2014: will allow multiple locations per post - will phase above out once data has been migrated
-#     # for now, UI will only allow selection of 1 location per post - this might change in future
-#     # locationPost has to have a corresponding LocationTopic
-#     klass.has_many :post_locations, class_name: "::MapTopic::LocationPost"
-#     klass.has_many :locations, through: :post_locations, class_name: "::MapTopic::Location"
-
-
-#     # , autosave: true, class_name: "::Tagger::Tag"
-#   end
-# end
-# Post.send(:include, LocationPostExtender)
-
-# # add the location to the post serializer
-# module ExtendPostSerializerForLocationTopic
-#   def self.included(klass)
-#     klass.attributes :location
-#     # below seemed to create a 'circular dependency' error when loading categories.json
-#     # klass.attributes :locations
-#   end
-#   #
-#   def location
-#     ::MapTopic::LocationSummarySerializer.new( object.location, root: false )
-#   end
-
-
-# end
-
-# PostSerializer.send(:include, ExtendPostSerializerForLocationTopic)
